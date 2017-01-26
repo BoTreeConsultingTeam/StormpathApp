@@ -1,0 +1,3 @@
+STORMPATH_CLIENT_APIKEY_ID: <stormpath API key id>
+STORMPATH_CLIENT_APIKEY_SECRET: <stormpath API key secret>
+STORMPATH_APPLICATION_HREF: <stormpath application href>
