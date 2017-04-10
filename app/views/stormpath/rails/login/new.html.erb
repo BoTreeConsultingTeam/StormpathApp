@@ -1,0 +1,31 @@
+<div class="container custom-container">
+  <div class="va-wrapper">
+    <div class="view login-view container">
+      <div class="box row">
+        <% if Stormpath::Rails.config.web.multi_tenancy.enabled && current_organization_name_key.nil? %>
+          <%= render partial: 'stormpath/rails/shared/select_organization', locals: {url: login_path(next: params[:next])} %>
+        <% else %>
+          <%= render partial: 'stormpath/rails/login/form' %>
+
+          <% if Stormpath::Rails.config.web.has_social_providers %>
+            <%= render 'stormpath/rails/shared/social_login' %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <% if Stormpath::Rails.config.web.forgot_password.enabled %>
+        <%= link_to "Forgot Password?", new_forgot_password_path, class: "forgot" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62316003-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
